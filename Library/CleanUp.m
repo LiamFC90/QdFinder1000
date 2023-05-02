@@ -2,4 +2,3 @@
 clearvars
 clc
 close all 
-exit
