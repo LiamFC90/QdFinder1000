@@ -32,4 +32,5 @@ CF2 = input('\nCF2==>  ');
 CF3 = input('\nCF3==>  ');
 CF4 = input('\nCF4==>  ');
 CFlist = [CF1 CF2 CF3 CF4];
+clear CF1 CF2 CF3 CF4
 
