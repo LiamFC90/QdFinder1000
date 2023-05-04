@@ -11,18 +11,18 @@
 
 %% User Inputs
 % E-File
-fprintf('Enter data file information:\n')
+fprintf('Enter data file information:')
 [folderE, fileE] = get_fofi();
 pathE = get_file_path(folderE, fileE);
 savepath = strcat(get_path(), '\Analysis\',string(folderE),'\',string(fileE));
 
 % B-File
-fprintf('Enter background file information:\n')
+fprintf('Enter background file information:')
 [folderB, fileB] = get_fofi();
 pathB = get_file_path(folderB, fileB);
 
 % DC-File
-fprintf('Enter data file information:\n')
+fprintf('Enter data file information:')
 [folderD, fileD] = get_fofi();
 pathD = get_file_path(folderD, fileD);
 

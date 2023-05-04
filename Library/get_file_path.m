@@ -12,7 +12,7 @@ while badpath == 1
     end
 
     if isempty(path) %tell user that they entered a bad path and ask for new path input
-        fprintf('\nBad Path. Can"t find file. Rekey inputs. Input 55555 folder to exit\n');
+        fprintf('\nBad Path. Can"t find file. Rekey inputs. leave any input empty to exit\n');
         [folder, file] = get_fofi();
     end
 
@@ -20,8 +20,12 @@ while badpath == 1
         badpath = 0;
     end
 
-    if folder == 55555
-        error('User requested exit:get_file_path:BAD PATH:55555')
+    if isempty(folder)
+        error('User requested exit:get_file_path:folderinput:BAD PATH')%outdated. moved error handle to get_fofi
     end
+    if isempty(file)
+        error('User requested exit:get_file_path:fileinput:BAD PATH')
+    end
+
 end
 

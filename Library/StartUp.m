@@ -5,14 +5,14 @@
 
 %Creates data folder struct
 if not(isfolder("Data"))
-    fprintf('\n->>>FirstTimeSetup\n->>>Creating "Data" folder')
+    fprintf('\n->>>FirstTimeSetup\n->>>Creating "Data" folder\n')
     mkdir("Data")
     
 end
 
 %Creates Analysis folder struct
 if not(isfolder("Analysis"))
-    fprintf('\n->>>Creating "Analysis" folder\n')
+    fprintf('->>>Creating "Analysis" folder\n')
     mkdir("Analysis")
     
 end
