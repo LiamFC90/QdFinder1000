@@ -16,5 +16,5 @@ if not(isfolder("Analysis"))
 end
 
 %Adds both new folders to path so matlab can see them
-addpath("Data\",'-end')
-addpath("Analysis\",'-end')
+addpath(genpath("Data\"))
+addpath(genpath("Analysis\"))
