@@ -1,6 +1,6 @@
 function [path] = get_file_path(folder,file)
-%UNTITLED grabs a file path to a specified data file
-%   Detailed explanation goes here
+%get_file_path grabs a file path to a specified data file
+%
 
 badpath = 1; %exit condition
 while badpath == 1
