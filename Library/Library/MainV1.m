@@ -57,9 +57,7 @@ sigmaj= 180; sigmajy = 180;%1/6/21
 % sigmai= 174; sigmaiy = 172;%4/2/21
 % sigmaj= 174; sigmajy = 172;%4/2/21
 
-folder = input('\n>>>Which folder?\n');
-file = input('\n>>>Which file?\n');
-savePath = strcat(get_path(), '\Analysis\',string(folder),'\',string(file));
+savePath = 'C:\Users\liamk\Desktop\QD_ver_4\RE__Alan_Van_Ordens_Zoom_Meeting\output220220';
 if simulated ==0
 
     %folder = dirlist(1).folder;
