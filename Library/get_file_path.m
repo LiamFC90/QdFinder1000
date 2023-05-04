@@ -24,7 +24,7 @@ while badpath == 1
         error('User requested exit:get_file_path:folderinput:BAD PATH')%outdated. moved error handle to get_fofi
     end
     if isempty(file)
-        error('User requested exit:get_file_path:fileinput:BAD PATH')
+        error('User requested exit:get_file_path:fileinput:BAD PATH')%oudated
     end
 
 end

@@ -28,9 +28,6 @@ fprintf('\\Data\\\n')
 addpath(genpath("Analysis\"))
 fprintf('\\Analysis\\\n')
 
-
-
-
 %% End, enter program
 fprintf('Done\n\n\n')
 Main()
