@@ -1,5 +1,7 @@
-clc
-
+%% Begin Main program
+   %should remain dominated by user input. Prefer all work done in function
+   %workspace. This workspace should hold handles determined by params of
+   %data file. These are then passed to function workspaces.
 
 
 
@@ -26,11 +28,9 @@ fileD = input('What is the dark count file?\n');
 pathD = get_file_path(folderD, fileD);
 
 % CF-Factors
-fprintf('\nEnter CF factors\n')
-CF1 = input('CF1==> ');
-CF2 = input('\nCF2==>  ');
-CF3 = input('\nCF3==>  ');
-CF4 = input('\nCF4==>  ');
-CFlist = [CF1 CF2 CF3 CF4];
-clear CF1 CF2 CF3 CF4
+CF_List = get_cf();
+
+
+
+%% Analysis
 

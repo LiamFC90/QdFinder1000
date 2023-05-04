@@ -1,5 +1,7 @@
-    
+ clc
 
+
+%% First time only
 
 %Creates data folder struct
 if not(isfolder("Data"))
@@ -15,6 +17,20 @@ if not(isfolder("Analysis"))
     
 end
 
-%Adds both new folders to path so matlab can see them
+%% Start Up
+
+%Adds both folders to path so matlab can see them
+fprintf('Adding resources to path: \n')
+
 addpath(genpath("Data\"))
+fprintf('\\Data\\\n')
+
 addpath(genpath("Analysis\"))
+fprintf('\\Analysis\\\n')
+
+
+
+
+%% End, enter program
+fprintf('Done\n\n\n')
+Main()
