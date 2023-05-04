@@ -5,3 +5,4 @@ close all
 
 rmpath("Analysis\")
 rmpath("Data\")
+fprintf('\nRemoved all paths\n')
