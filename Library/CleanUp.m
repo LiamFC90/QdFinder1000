@@ -2,3 +2,6 @@
 clearvars
 clc
 close all 
+
+rmpath("Analysis\")
+rmpath("Data\")
