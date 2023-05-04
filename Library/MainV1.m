@@ -69,7 +69,7 @@ if simulated ==0
     Etag = 'QD_SingleDot';
 
 
-    fname_E = which(strcat(string(folder),'_',string(file),'.ptu'));
+    fname_E = get_file_path(folder,file);
 
     fname_dc = which("210820_94.ptu");
     fname_B = which("210820_88.ptu");
