@@ -69,7 +69,7 @@ if simulated ==0
     Etag = 'QD_SingleDot';
 
 
-    fname_E = which("210820_57.ptu");
+    fname_E = which(strcat(string(folder),'_',string(file),'.ptu'));
 
     fname_dc = which("210820_94.ptu");
     fname_B = which("210820_88.ptu");
@@ -102,39 +102,39 @@ if simulated ==0
     %%
 end
 
-axisvar = 'Off';
-posvar = 'Close';
-LTcase = 'E2short';
-Emvar = 'EprobEqual';
-SimTimevar = '30';
+% % % axisvar = 'Off';
+% % % posvar = 'Close';
+% % % LTcase = 'E2short';
+% % % Emvar = 'EprobEqual';
+% % % SimTimevar = '30';
 
 
 
-if simulated ==1
-    sigmai = 160;%in nm
-    sigmaiy = 160;
-    sigmaj = 160;%in nm
-    sigmajy = 160;
-
-    T=400;
-
-    cf1 = 1; cf2 = 1; cf3 =1;cf4 = 1;%
-    Sim_tag = strcat('simulate2E_Axis_',axisvar,'_Pos_',posvar,'_Case_',LTcase,'_Emission_',Emvar,'_SimTimeTest_',SimTimevar);
-    fname_dc = strcat('C:\Users\liamk\Desktop\QDver1.2.3\RE__Alan_Van_Ordens_Zoom_Meeting\output220220\Sims\',Sim_tag,'\DC.mat');
-    fname_B = strcat('C:\Users\liamk\Desktop\QDver1.2.3\RE__Alan_Van_Ordens_Zoom_Meeting\output220220\Sims\',Sim_tag,'\B.mat');
-    fname_E = strcat('C:\Users\liamk\Desktop\QDver1.2.3\RE__Alan_Van_Ordens_Zoom_Meeting\output220220\Sims\',Sim_tag,'\E1E2.mat');
-
-    %     fname_E = strcat('C:\Users\dunla\OneDrive\Desktop\programs210412\output210612\simulate210601_v3_E1E2.mat');
-
-    %     fname_dc = 'C:\Users\dunla\OneDrive\Desktop\programs210412\output210612\simulate210601_v1_DC_plusIRF2.mat';
-    %     fname_B = 'C:\Users\dunla\OneDrive\Desktop\programs210412\output210612\simulate210601_v1_Bkg_plusIRF2.mat';
-    %     fname_E = strcat('C:\Users\dunla\OneDrive\Desktop\programs210412\output210612\simulate210601_v3_E1E2_plusIRF2.mat');
-end
+% % % if simulated ==1
+% % %     sigmai = 160;%in nm
+% % %     sigmaiy = 160;
+% % %     sigmaj = 160;%in nm
+% % %     sigmajy = 160;
+% % % 
+% % %     T=400;
+% % % 
+% % %     cf1 = 1; cf2 = 1; cf3 =1;cf4 = 1;%
+% % %     Sim_tag = strcat('simulate2E_Axis_',axisvar,'_Pos_',posvar,'_Case_',LTcase,'_Emission_',Emvar,'_SimTimeTest_',SimTimevar);
+% % %     fname_dc = strcat('C:\Users\liamk\Desktop\QDver1.2.3\RE__Alan_Van_Ordens_Zoom_Meeting\output220220\Sims\',Sim_tag,'\DC.mat');
+% % %     fname_B = strcat('C:\Users\liamk\Desktop\QDver1.2.3\RE__Alan_Van_Ordens_Zoom_Meeting\output220220\Sims\',Sim_tag,'\B.mat');
+% % %     fname_E = strcat('C:\Users\liamk\Desktop\QDver1.2.3\RE__Alan_Van_Ordens_Zoom_Meeting\output220220\Sims\',Sim_tag,'\E1E2.mat');
+% % % 
+% % %     %     fname_E = strcat('C:\Users\dunla\OneDrive\Desktop\programs210412\output210612\simulate210601_v3_E1E2.mat');
+% % % 
+% % %     %     fname_dc = 'C:\Users\dunla\OneDrive\Desktop\programs210412\output210612\simulate210601_v1_DC_plusIRF2.mat';
+% % %     %     fname_B = 'C:\Users\dunla\OneDrive\Desktop\programs210412\output210612\simulate210601_v1_Bkg_plusIRF2.mat';
+% % %     %     fname_E = strcat('C:\Users\dunla\OneDrive\Desktop\programs210412\output210612\simulate210601_v3_E1E2_plusIRF2.mat');
+% % % end
 
 %program begins
 
 % f = get_B_and_DC_Params_6ch_210408(fname_dc,fname_B,tc,'C:\Users\dunla\OneDrive\Desktop\programs210412\output\BandDC_params.mat',wH,simulated);
-f = get_B_and_DC_Params_6ch_210612(fname_dc,fname_B,tc,'C:\Users\liamk\Desktop\QD_ver_4\RE__Alan_Van_Ordens_Zoom_Meeting\output220220\BandDC_params.mat',wH,simulated);
+f = get_B_and_DC_Params_6ch(fname_dc,fname_B,tc,'C:\Users\liamk\Desktop\QD_ver_4\RE__Alan_Van_Ordens_Zoom_Meeting\output220220\BandDC_params.mat',wH,simulated);
 
 load('C:\Users\liamk\Desktop\QD_ver_4\RE__Alan_Van_Ordens_Zoom_Meeting\output220220\BandDC_params.mat');
 N = bint/(T*10^-9);%number of periods in time bint_pos
