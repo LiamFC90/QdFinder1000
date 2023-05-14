@@ -23,9 +23,11 @@ end
 fprintf('Adding resources to path: \n')
 
 addpath(genpath("Data\"))
+addpath("Data/")
 fprintf('\\Data\\\n')
 
 addpath(genpath("Analysis\"))
+addpath("Analysis/")
 fprintf('\\Analysis\\\n')
 
 %% End, enter program

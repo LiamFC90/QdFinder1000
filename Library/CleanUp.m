@@ -3,6 +3,6 @@ clearvars
 clc
 close all 
 
-rmpath("Analysis\")
-rmpath("Data\")
+rmpath("Analysis/")
+rmpath("Data/")
 fprintf('\nRemoved all paths\n')
