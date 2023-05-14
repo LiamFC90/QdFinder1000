@@ -13,7 +13,7 @@ set(groot,'defaultAxesYGrid','on')
 
 
 
-fprintf('ConfigLoad\n') 
+fprintf('Loaded Config Params\n') 
 
 
 %% End

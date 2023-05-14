@@ -1,34 +1,36 @@
- clc
+clc
 
 
 %% First time only
 
 %Creates data folder struct
 if not(isfolder("Data"))
-    fprintf('\n->>>FirstTimeSetup\n->>>Creating "Data" folder\n')
     mkdir("Data")
-    
 end
 
 %Creates Analysis folder struct
 if not(isfolder("Analysis"))
-    fprintf('->>>Creating "Analysis" folder\n')
     mkdir("Analysis")
-    
 end
 
 %% Start Up
-
+%Set up changes for OS. Set up supports Linux and Windows. No MacOS support
 %Adds both folders to path so matlab can see them
 fprintf('Adding resources to path: \n')
 
-addpath(genpath("Data\"))
-addpath("Data/")
-fprintf('\\Data\\\n')
+if isunix
+    addpath(genpath("Data/"))
+elseif ispc
+    addpath(genpath("Data\"))
+end
+fprintf('...Data...\n')
 
-addpath(genpath("Analysis\"))
-addpath("Analysis/")
-fprintf('\\Analysis\\\n')
+if isunix
+    addpath(genpath("Analysis/"))
+elseif ispc
+    adddpath(genpath("Analysis\"))
+end
+fprintf('...Analysis...\n')
 
 %% End, enter program
 fprintf('Done\n\n\n')

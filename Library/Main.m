@@ -16,7 +16,6 @@ configparams();
 fprintf('Enter data file information:')
 [folderE, fileE] = get_fofi();
 pathE = get_file_path(folderE, fileE);
-savepath = strcat(get_path(), '\Analysis\',string(folderE),'\',string(fileE));
 
 % B-File
 fprintf('Enter background file information:')
@@ -24,7 +23,7 @@ fprintf('Enter background file information:')
 pathB = get_file_path(folderB, fileB);
 
 % DC-File
-fprintf('Enter data file information:')
+fprintf('Enter dark count file information:')
 [folderD, fileD] = get_fofi();
 pathD = get_file_path(folderD, fileD);
 
