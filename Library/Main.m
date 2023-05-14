@@ -3,8 +3,9 @@
    %workspace. This workspace should hold handles determined by params of
    %data file. These are then passed to function workspaces.
    %Run this script to execute the program
-
-
+%% Begin Setup
+% Set output config
+configparams();
 
 
 
@@ -33,4 +34,5 @@ CF_List = get_cf();
 
 
 %% Analysis
+
 

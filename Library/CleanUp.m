@@ -2,6 +2,7 @@
 clearvars
 clc
 close all 
+closeNoPrompt(matlab.desktop.editor.getAll)
 
 rmpath("Analysis/")
 rmpath("Data/")
