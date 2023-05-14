@@ -30,4 +30,4 @@ fprintf('\\Analysis\\\n')
 
 %% End, enter program
 fprintf('Done\n\n\n')
-Main()
+fprintf('Execute "Main()" to begin analysis\n')
