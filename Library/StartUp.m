@@ -1,5 +1,7 @@
 clc
-
+%% Preamble
+ver = '1.000';%build ID
+fprintf('Initializing QdFinder: Version %s on %s\n',ver,string(computer));
 
 %% First time only
 
