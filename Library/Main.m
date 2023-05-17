@@ -35,6 +35,4 @@ CF_List = get_cf();
 %% Analysis
 
 get_dtimeplot(pathE)
-
-[sync, ch, dtime, total] = cutRepeats(sync,ch,dtime,total);
-[sync, ch, dtime, total] = cutRepeats(sync,ch,dtime,total);
+get_mBcounts(pathE, tc, bint, 0)
