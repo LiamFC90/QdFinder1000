@@ -10,6 +10,8 @@ set(0,'DefaultTextFontSize', 10)
 set(0,'defaultfigurecolor',[1 1 1])
 set(groot,'defaultAxesXGrid','on')
 set(groot,'defaultAxesYGrid','on')
+bint = input('bint\n');
+tc = input('tc\n');
 
 
 

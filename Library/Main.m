@@ -36,6 +36,5 @@ CF_List = get_cf();
 
 get_dtimeplot(pathE)
 
-
 [sync, ch, dtime, total] = cutRepeats(sync,ch,dtime,total);
 [sync, ch, dtime, total] = cutRepeats(sync,ch,dtime,total);
