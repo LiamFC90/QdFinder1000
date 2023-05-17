@@ -1,8 +1,8 @@
-function [outputArg1,outputArg2] = get_dtimeplot(folder, file)
+function [outputArg1,outputArg2] = get_dtimeplot(filepath)
 %GET_DTIMEPLOT Prints a histogram that shows decays for the data file
 %   Detailed explanation goes here
 
-filepath = which(strcat(folder,'_',file));
+
 [output, ~]= Read_PTU_V1_Barelli_fast(filepath);
 MeasDesc_GlobalResolution = output.Headers.MeasDesc_GlobalResolution;%macrotime resolution in seconds
 MeasDesc_Resolution = output.MeasDesc_Resolution; %microt resolution in seconds
