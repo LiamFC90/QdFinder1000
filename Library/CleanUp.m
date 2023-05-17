@@ -12,7 +12,7 @@ if isunix
 elseif ispc
     rmpath(genpath("Analysis\"))
     rmpath(genpath("Data\"))
-if ismac
+elseif ismac
     rmpath(genpath("Analysis/"))
     rmpath(genpath("Data/"))
 end
