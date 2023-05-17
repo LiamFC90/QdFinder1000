@@ -36,4 +36,4 @@ CF_List = get_cf();
 
 get_dtimeplot(pathE)
 get_mBcounts(pathE, tc, bint, simulated)
-get_B_and_DC_Params_6ch(pathD,pathB,tc,Wh,simulated)
+get_B_and_DC_Params_6ch(pathD,pathB,tc,Wh,simulated,folderE,fileE,bint)

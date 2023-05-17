@@ -1,5 +1,5 @@
  
-function f = get_B_and_DC_Params_6ch_210612(fname_dc,fname_B,tc,wH,simulated)
+function f = get_B_and_DC_Params_6ch_210612(fname_dc,fname_B,tc,wH,simulated,folderE,fileE,bint)
 
 if simulated==0
 [output,txtout] =Read_PTU_V1_Barelli_fast(fname_dc);% this function must be in the same directory as this progra
@@ -63,7 +63,7 @@ hist_dc4 = Hist_dc4(1,:)./max(ssync);
 clearvars -except T tc bint_E fname_dc fname_B fname_E...
     fD1a fD1b fD2a fD2b fD3a fD3b fD4a fD4b...
     RD1 RD2 RD3 RD4...
-    hist_dc1 hist_dc2 hist_dc3 hist_dc4 tag fname_params wH simulated
+    hist_dc1 hist_dc2 hist_dc3 hist_dc4 tag fname_params wH simulated fileE folderE
 
 if simulated==0
 [output,txtout] =Read_PTU_V1_Barelli_fast(fname_B);% this function must be in the same directory as this progra
@@ -385,10 +385,21 @@ clearvars -except T tc bint_E fname_dc fname_B fname_E...
     PB1 PB2 PB3 PB4...
     fBa fBb...
     hist_B1 hist_B2 hist_B3 hist_B4 tag fname_params...
-    yB1 yB2 yB3 yB4 xB simulated
+    yB1 yB2 yB3 yB4 xB simulated fileE folderE
 
 
-save('Analysis\tempParams.mat');
+
+if ispc
+    mkdir(strcat("Analysis\",string(folderE),'\',string(fileE)))
+    save(strcat("Analysis\",string(folderE),'\',string(fileE),"\BandD.mat"))
+elseif ismac || isunix
+    mkdir(strcat("Analysis/",string(folderE),'/',string(fileE)))
+    save(strcat("Analysis/",string(folderE),'/',string(fileE),"/BandD.mat")) 
+
+
+end
+
+
 f = 1;
 end
 
