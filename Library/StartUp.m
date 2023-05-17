@@ -24,6 +24,8 @@ if isunix
     addpath(genpath("Data/"))
 elseif ispc
     addpath(genpath("Data\"))
+elseif ismac
+    addpath(genpath("Data/"))
 end
 fprintf('...Data...\n')
 
@@ -31,6 +33,8 @@ if isunix
     addpath(genpath("Analysis/"))
 elseif ispc
     addpath(genpath("Analysis\"))
+elseif ismac
+    addpath(genpath("Analysis/"))
 end
 fprintf('...Analysis...\n')
 

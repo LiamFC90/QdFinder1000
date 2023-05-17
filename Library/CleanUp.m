@@ -12,5 +12,8 @@ if isunix
 elseif ispc
     rmpath(genpath("Analysis\"))
     rmpath(genpath("Data\"))
+if ismac
+    rmpath(genpath("Analysis/"))
+    rmpath(genpath("Data/"))
 end
 fprintf('\n\nCleanedUp\n\n')
