@@ -10,9 +10,12 @@ set(0,'DefaultTextFontSize', 10)
 set(0,'defaultfigurecolor',[1 1 1])
 set(groot,'defaultAxesXGrid','on')
 set(groot,'defaultAxesYGrid','on')
+
+%%put these somewhere better %%
 bint = input('bint\n');
 tc = input('tc\n');
-
+Wh = .96; %histogram bin width
+simulated = 0;
 
 
 fprintf('Loaded Config Params\n') 

@@ -35,4 +35,5 @@ CF_List = get_cf();
 %% Analysis
 
 get_dtimeplot(pathE)
-get_mBcounts(pathE, tc, bint, 0)
+get_mBcounts(pathE, tc, bint, simulated)
+get_B_and_DC_Params_6ch(pathD,pathB,tc,Wh,simulated)

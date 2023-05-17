@@ -1,5 +1,5 @@
  
-function f = get_B_and_DC_Params_6ch_210612(fname_dc,fname_B,tc,fname_params,wH,simulated)
+function f = get_B_and_DC_Params_6ch_210612(fname_dc,fname_B,tc,wH,simulated)
 
 if simulated==0
 [output,txtout] =Read_PTU_V1_Barelli_fast(fname_dc);% this function must be in the same directory as this progra
@@ -388,7 +388,7 @@ clearvars -except T tc bint_E fname_dc fname_B fname_E...
     yB1 yB2 yB3 yB4 xB simulated
 
 
-save(fname_params);
+save('Analysis\tempParams.mat');
 f = 1;
 end
 
