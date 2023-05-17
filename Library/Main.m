@@ -34,4 +34,7 @@ CF_List = get_cf();
 
 %% Analysis
 
+get_dtimeplot(folderE,FileE)
 
+[sync, ch, dtime, total] = cutRepeats(sync,ch,dtime,total);
+[sync, ch, dtime, total] = cutRepeats(sync,ch,dtime,total);

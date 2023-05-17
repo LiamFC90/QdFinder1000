@@ -30,7 +30,7 @@ fprintf('...Data...\n')
 if isunix
     addpath(genpath("Analysis/"))
 elseif ispc
-    adddpath(genpath("Analysis\"))
+    addpath(genpath("Analysis\"))
 end
 fprintf('...Analysis...\n')
 
