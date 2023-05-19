@@ -15,6 +15,21 @@ if not(isfolder("Analysis"))
     mkdir("Analysis")
 end
 
+%Creates sorting keys
+if not(isfile("Library\sortingP_idxGuide_1emitter_backgrd_dc.mat")) || not(isfile("Library/sortingP_idxGuide_1emitter_backgrd_dc.mat"))
+    makeSortingMatrix_1emitter_backgrd_dc
+else
+    fprintf('Found key: makeSortingMatrix_1emitter_backgrd_dc\n')
+end
+if not(isfile("Library\sortingP_idxGuide_2emitters_backgrd_dc.mat")) || not(isfile("Library/sortingP_idxGuide_2emitters_backgrd_dc.mat"))
+    makeSortingMatrix_2emitters_backgrd_dc
+else
+    fprintf('Found key: makeSortingMatrix_2emitters_backgrd_dc\n')
+end
+
+
+
+
 %% Start Up
 %Set up changes for OS. Set up supports Linux and Windows. No MacOS support
 %Adds both folders to path so matlab can see them

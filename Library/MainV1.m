@@ -249,7 +249,7 @@ y0 = NaN.*ones(1,size(Mcounts,1));
 P0 = NaN.*ones(1,size(Mcounts,1));
 LnL0 = NaN.*ones(1,size(Mcounts,1));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for icnt = 6:9%1:size(Mcounts,1)
+for icnt = 1:size(Mcounts,1)
     disp(strcat(num2str(icnt),' of ',num2str(size(Mcounts,1))))
     if sM(icnt)>=thresholdM
         testThresh(icnt) =1;
