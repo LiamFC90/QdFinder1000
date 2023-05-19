@@ -466,12 +466,12 @@ title(strcat(string(folderE),'_',string(fileE),'_tc',string(tc),'ns_bint',string
 
 if ispc
     savepath = strcat("Analysis\",string(folderE),'\',string(fileE));
-    temppath = cd(savepath)
+    temppath = cd(savepath);
     exportgraphics(gcf,strcat('Centroid_tc',string(tc),'ns_bint',string(bint),'s.png'))
     cd(temppath)
 elseif isunix || ismac
     savepath = strcat("Analysis/",string(folderE),'/',string(fileE));
-    temppath = cd(savepath)
+    temppath = cd(savepath);
     exportgraphics(gcf,strcat('Centroid_tc',string(tc),'ns_bint',string(bint),'s.png'))
     cd(temppath)
 end
