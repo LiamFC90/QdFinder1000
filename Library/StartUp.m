@@ -1,6 +1,6 @@
 clc
 %% Preamble
-ver = '1.001';%build ID
+ver = '1.002';%build ID
 fprintf('Initializing QdFinder: Version %s on %s\n',ver,string(computer));
 !git -v
 
