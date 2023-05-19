@@ -431,7 +431,27 @@ for icnt = 1:size(Mcounts,1)
 
 end
 
-foldcent = [x0 y0 Esolvedlist LnL0];
+%%Decode fold 2
+folderE = fold(1);
+fileE = fold(2);
+folderB = fold(3);
+fileB = fold(4);
+folderD = fold(5);
+fileD = fold(6);
+cf1 = fold(7); 
+cf2 = fold(8); 
+cf3 = fold(9); 
+cf4 = fold(10);
+tc = fold(11);
+bint = fold(12);
+sigmai = fold(13);
+sigmaiy = fold(14);
+sigmaj = fold(15);
+sigmajy = fold(16);
+pathE = string(pathfold(1));
+pathB = string(pathfold(2));
+pathD = string(pathfold(3)); 
+foldcent = [x0 y0 Esolvedlist LnL0]; %new foldvar for CENT POS
 
 load train
 %sound(y,Fs)
@@ -441,6 +461,20 @@ grid on; box on;
 set(gcf,'color','w');
 xlabel('x (nm)');ylabel('y (nm)')
 axis equal
+title(strcat(string(folderE),'_',string(fileE),'_tc',string(tc),'ns_bint',string(bint),'s'),Interpreter="none")
+
+
+if ispc
+    savepath = strcat("Analysis\",string(folderE),'\',string(fileE));
+    temppath = cd(savepath)
+    exportgraphics(gcf,strcat('Centroid_tc',string(tc),'ns_bint',string(bint),'s.png'))
+    cd(temppath)
+elseif isunix || ismac
+    savepath = strcat("Analysis/",string(folderE),'/',string(fileE));
+    temppath = cd(savepath)
+    exportgraphics(gcf,strcat('Centroid_tc',string(tc),'ns_bint',string(bint),'s.png'))
+    cd(temppath)
+end
 
 end
 

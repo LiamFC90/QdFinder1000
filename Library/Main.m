@@ -5,6 +5,9 @@
    %Run this script to execute the program
 %% Begin Setup
 % Set output config
+load(which("DirPath.mat"))
+cd(DirPath)
+clear DirPath
 configparams();
 
 
@@ -32,12 +35,12 @@ CF_List = get_cf();
 
 %Build data vars
 fold = [folderE, fileE, folderB, fileB, folderD, fileD, CF_List, tc, bint,sigmai, sigmaiy, sigmaj, sigmajy];
-pathfold = {pathE, pathB, pathD};
+foldpath = {pathE, pathB, pathD};
 
 %% Analysis
 
 get_dtimeplot(pathE)
 get_B_and_DC_Params_6ch(pathD,pathB,tc,Wh,simulated,folderE,fileE,bint)
-[Mcounts] = get_centroidPOS(fold, pathfold, 0);
+[Mcounts,foldcent] = get_centroidPOS(fold, foldpath, 0);
 
 

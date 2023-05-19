@@ -54,6 +54,16 @@ elseif ismac
 end
 fprintf('...Analysis...\n')
 
+if not(isfile("Library\DirPath.mat"))
+DirPath = cd;
+fprintf('Saving directory information\n Main directory is at:\n%s\n',DirPath)
+if ispc
+save("Library\DirPath.mat","DirPath")
+elseif isunix || ismac
+save("Library/DirPath.mat","DirPath")
+end
+end
+
 %% End, enter program
 fprintf('Done\n\n\n')
 fprintf('Execute "Main()" to begin analysis\n')
