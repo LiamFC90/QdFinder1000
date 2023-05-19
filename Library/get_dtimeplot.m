@@ -16,6 +16,7 @@ if max(ch)==7
 end
 
 histogram(dtime)
-
+set(gca,'YScale','log')
+drawnow
 end
 

@@ -451,7 +451,7 @@ sigmajy = fold(16);
 pathE = string(pathfold(1));
 pathB = string(pathfold(2));
 pathD = string(pathfold(3)); 
-foldcent = [x0 y0 Esolvedlist LnL0]; %new foldvar for CENT POS
+foldcent = [x0' y0' Esolvedlist' LnL0']; %new foldvar for CENT POS
 
 load train
 %sound(y,Fs)
@@ -467,6 +467,7 @@ title(strcat(string(folderE),'_',string(fileE),'_tc',string(tc),'ns_bint',string
 if ispc
     savepath = strcat("Analysis\",string(folderE),'\',string(fileE));
     temppath = cd(savepath);
+    save(strcat('Centroid_tc',string(tc),'ns_bint',string(bint),'s.mat'),"foldcent")
     exportgraphics(gcf,strcat('Centroid_tc',string(tc),'ns_bint',string(bint),'s.png'))
     cd(temppath)
 elseif isunix || ismac
@@ -475,6 +476,6 @@ elseif isunix || ismac
     exportgraphics(gcf,strcat('Centroid_tc',string(tc),'ns_bint',string(bint),'s.png'))
     cd(temppath)
 end
-
+fprintf('Found Centroid at:\nX = %.2f +- %.2f\nY = %.2f +- %.2f\n',mean(x0),std(x0),mean(y0),std(y0))
 end
 

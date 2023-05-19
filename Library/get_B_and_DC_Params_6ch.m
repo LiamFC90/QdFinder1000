@@ -1,5 +1,5 @@
  
-function f = get_B_and_DC_Params_6ch(fname_dc,fname_B,tc,wH,simulated,folderE,fileE,bint)
+function [] = get_B_and_DC_Params_6ch(fname_dc,fname_B,tc,wH,simulated,folderE,fileE,bint)
 
 if simulated==0
 [output,txtout] =Read_PTU_V1_Barelli_fast(fname_dc);% this function must be in the same directory as this progra
@@ -402,7 +402,7 @@ elseif ismac || isunix
 end
 
 
-f = 1;
+%f = 1 old output logic
 end
 
 

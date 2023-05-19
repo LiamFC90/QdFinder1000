@@ -4,6 +4,8 @@
    %data file. These are then passed to function workspaces.
    %Run this script to execute the program
 %% Begin Setup
+close all
+clearvars
 % Set output config
 %rerun startup to ensure that file has been parsed since git update
 StartUp()
