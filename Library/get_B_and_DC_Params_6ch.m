@@ -1,5 +1,5 @@
  
-function f = get_B_and_DC_Params_6ch_210612(fname_dc,fname_B,tc,wH,simulated,folderE,fileE,bint)
+function f = get_B_and_DC_Params_6ch(fname_dc,fname_B,tc,wH,simulated,folderE,fileE,bint)
 
 if simulated==0
 [output,txtout] =Read_PTU_V1_Barelli_fast(fname_dc);% this function must be in the same directory as this progra
@@ -391,10 +391,12 @@ clearvars -except T tc bint_E fname_dc fname_B fname_E...
 
 if ispc
     mkdir(strcat("Analysis\",string(folderE),'\',string(fileE)))
-    save(strcat("Analysis\",string(folderE),'\',string(fileE),"\BandD.mat"))
+    save(strcat("Analysis\",string(folderE),'\',string(fileE),"\BandD_tc",string(tc),".mat"))
+    addpath(genpath("Analysis\"))
 elseif ismac || isunix
     mkdir(strcat("Analysis/",string(folderE),'/',string(fileE)))
-    save(strcat("Analysis/",string(folderE),'/',string(fileE),"/BandD.mat")) 
+    save(strcat("Analysis/",string(folderE),'/',string(fileE),"/BandD_tc",string(tc),".mat"))
+    addpath(genpath("Analysis/"))
 
 
 end

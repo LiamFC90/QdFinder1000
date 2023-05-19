@@ -31,13 +31,12 @@ pathD = get_file_path(folderD, fileD);
 CF_List = get_cf();
 
 %Build data vars
-fold = [folderE, fileE, folderB, fileB, folderD, fileD, CF_List, tc, bint];
-pathfold = [pathE, pathB, pathD];
+fold = [folderE, fileE, folderB, fileB, folderD, fileD, CF_List, tc, bint,sigmai, sigmaiy, sigmaj, sigmajy];
+pathfold = {pathE, pathB, pathD};
 
 %% Analysis
 
 get_dtimeplot(pathE)
-get_mBcounts(pathE, tc, bint, simulated)
 get_B_and_DC_Params_6ch(pathD,pathB,tc,Wh,simulated,folderE,fileE,bint)
 [Mcounts] = get_centroidPOS(fold, pathfold, 0);
 

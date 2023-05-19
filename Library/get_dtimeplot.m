@@ -1,4 +1,4 @@
-function [outputArg1,outputArg2] = get_dtimeplot(filepath)
+function [plotvar] = get_dtimeplot(filepath)
 %GET_DTIMEPLOT Prints a histogram that shows decays for the data file
 %   Detailed explanation goes here
 

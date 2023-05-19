@@ -10,12 +10,23 @@ folderB = fold(3);
 fileB = fold(4);
 folderD = fold(5);
 fileD = fold(6);
-CF_List = fold(7); cf1 = CF_List(1); cf2 = CF_List(2); cf3 = CF_List(3); cf4 = CF_List(4);
-tc = fold(8);
-bint = fold(9);
-pathE = pathfold(1);
-pathB = pathfold(2);
-pathD = pathfold(3);
+cf1 = fold(7); 
+cf2 = fold(8); 
+cf3 = fold(9); 
+cf4 = fold(10);
+tc = fold(11);
+bint = fold(12);
+sigmai = fold(13);
+sigmaiy = fold(14);
+sigmaj = fold(15);
+sigmajy = fold(16);
+pathE = string(pathfold(1));
+pathB = string(pathfold(2));
+pathD = string(pathfold(3));
+
+%% Load BandD file
+load(which(strcat('BandD_tc',string(tc),'.mat')));
+N = bint/(T*10^-9);%number of periods in time bint_pos
 
 %% Part 1: find a single centroid location
 
@@ -89,7 +100,8 @@ clearvars -except sync ch dtime total bint  N T tc bint Mcounts mBcounts...
     ianalyze ...
     fnum2 fname_B fname_dc E_tag...
     pfia_list ifi pfja_list positions R2 simulated...
-    cf1 cf2 cf3 cf4 sigmai sigmaiy sigmaj sigmajy savePath Sim_tag wH Etag E_num cntfile dirlist
+    cf1 cf2 cf3 cf4 sigmai sigmaiy sigmaj sigmajy savePath Sim_tag wH Etag E_num cntfile dirlist fold pathfold
+
 
 
 
