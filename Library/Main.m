@@ -5,6 +5,9 @@
    %Run this script to execute the program
 %% Begin Setup
 % Set output config
+%rerun startup to ensure that file has been parsed since git update
+StartUp()
+fprintf('...Executing Main()...\n')
 load(which("DirPath.mat"))
 cd(DirPath)
 clear DirPath

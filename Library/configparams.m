@@ -12,8 +12,8 @@ set(groot,'defaultAxesXGrid','on')
 set(groot,'defaultAxesYGrid','on')
 
 %%put these somewhere better %%
-bint = input('bint(s)\n>>>');
-tc = input('tc(ns)\n>>>');
+bint = input('Enter BIN time(s)? \n>>>');
+tc = input('Enter TIME CUT(ns)?\n>>>');
 Wh = .96; %histogram bin width
 simulated = 0;
 sigmai= 180; sigmaiy = 180;%PSF1 width

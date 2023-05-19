@@ -518,12 +518,15 @@ for i = 1:leng
     end
 end
 
-fprintf('Saving sort key: SingleEmitter to Library\n')
+
 if ispc
+    fprintf('Saving sort key: SingleEmitter to ...\\Library...\n')
 save("Library\sortingP_idxGuide_1emitter_backgrd_dc.mat",'key1a', 'key2a', 'key3a', 'key4a', ...
     'key1b', 'key2b', 'key3b', 'key4b', "keyNone","keyMulti")
-else
+elseif isunix || ismac
+    fprintf('Saving sort key: SingleEmitter to .../Library...\n')
 save("Library/sortingP_idxGuide_1emitter_backgrd_dc.mat",'key1a', 'key2a', 'key3a', 'key4a', ...
     'key1b', 'key2b', 'key3b', 'key4b', "keyNone","keyMulti")
+
 end
 

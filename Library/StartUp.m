@@ -1,5 +1,6 @@
 clc
 %% Preamble
+cd
 ver = '1.002';%build ID
 fprintf('Initializing QdFinder: Version %s on %s\n',ver,string(computer));
 !git -v
@@ -18,12 +19,16 @@ end
 
 %Creates sorting keys
 if not(isfile("Library\sortingP_idxGuide_1emitter_backgrd_dc.mat")) || not(isfile("Library/sortingP_idxGuide_1emitter_backgrd_dc.mat"))
+    fprintf('Get single emitter sort key\n')
     makeSortingMatrix_1emitter_backgrd_dc
+    fprintf('Found key: makeSortingMatrix_1emitter_backgrd_dc\n')
 else
     fprintf('Found key: makeSortingMatrix_1emitter_backgrd_dc\n')
 end
 if not(isfile("Library\sortingP_idxGuide_2emitters_backgrd_dc.mat")) || not(isfile("Library/sortingP_idxGuide_2emitters_backgrd_dc.mat"))
+    fprintf('Get multi emitter sort key\n')
     makeSortingMatrix_2emitters_backgrd_dc
+    fprintf('Found key: makeSortingMatrix_2emitters_backgrd_dc\n')
 else
     fprintf('Found key: makeSortingMatrix_2emitters_backgrd_dc\n')
 end
