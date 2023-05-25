@@ -422,6 +422,7 @@ for icnt = 1:size(Mcounts,1)
         end
         x0(icnt) = xyL(1,1);
         y0(icnt) = xyL(1,2);
+        
         Esolvedlist(icnt) = Pisolved;
         if isnan(x0(icnt))==0
             LnL0(icnt) = lnLL(irun);
@@ -430,7 +431,18 @@ for icnt = 1:size(Mcounts,1)
     end
 
 end
-
+time = 0:bint:(icnt-1)*bint;
+x0 = x0(1:length(time));
+y0 = y0(1:length(time));
+[dataX,~] = DriftFit2(time,x0);
+[dataY,~] = DriftFit2(time,y0);
+for n = 1:numel(icnt)
+    x01(n) = x0(n) - dataX.p1*time(n);
+    y01(n) = y0(n) - dataY.p1*time(n);
+end
+if any(x01 == x0) || any(y01 == y0)
+    fprintf('a\n line 444 test')
+end
 %%Decode fold 2
 folderE = fold(1);
 fileE = fold(2);
