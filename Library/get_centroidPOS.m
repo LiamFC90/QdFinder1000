@@ -453,8 +453,7 @@ pathB = string(pathfold(2));
 pathD = string(pathfold(3)); 
 foldcent = [x0' y0' Esolvedlist' LnL0']; %new foldvar for CENT POS
 
-load train
-%sound(y,Fs)
+
 figure('units','inch','position',[1,1,3,3]);
 scatter(x0,y0,'k','filled'); hold on
 grid on; box on;
@@ -473,6 +472,7 @@ if ispc
 elseif isunix || ismac
     savepath = strcat("Analysis/",string(folderE),'/',string(fileE));
     temppath = cd(savepath);
+    save(strcat('Centroid_tc',string(tc),'ns_bint',string(bint),'s.mat'),"foldcent")
     exportgraphics(gcf,strcat('Centroid_tc',string(tc),'ns_bint',string(bint),'s.png'))
     cd(temppath)
 end

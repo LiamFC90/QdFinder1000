@@ -32,7 +32,7 @@ if not(isfile("Library\sortingP_idxGuide_2emitters_backgrd_dc.mat")) || not(isfi
 else
     fprintf('Found key: makeSortingMatrix_2emitters_backgrd_dc\n')
 end
-
+printBreak
 
 
 
@@ -68,7 +68,9 @@ elseif isunix || ismac
 save("Library/DirPath.mat","DirPath")
 end
 end
-
+printLine
 %% End, enter program
 fprintf('Done\n\n\n')
 fprintf('Execute "Main()" to begin analysis\n')
+printBreak
+printLine

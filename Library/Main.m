@@ -1,4 +1,4 @@
-%% Begin Main program
+ %% Begin Main program
    %should remain dominated by user input. Prefer all work done in function
    %workspace. This workspace should hold handles determined by params of
    %data file. These are then passed to function workspaces.
@@ -20,32 +20,24 @@ configparams();
 
 
 %% User Inputs
-% E-File
-fprintf('Enter data file information:')
-[folderE, fileE] = get_fofi();
-pathE = get_file_path(folderE, fileE);
+%Ask user what to do
 
-% B-File
-fprintf('Enter background file information:')
-[folderB, fileB] = get_fofi();
-pathB = get_file_path(folderB, fileB);
-
-% DC-File
-fprintf('Enter dark count file information:')
-[folderD, fileD] = get_fofi();
-pathD = get_file_path(folderD, fileD);
-
-% CF-Factors
-CF_List = get_cf();
-
-%Build data vars
-fold = [folderE, fileE, folderB, fileB, folderD, fileD, CF_List, tc, bint,sigmai, sigmaiy, sigmaj, sigmajy];
-foldpath = {pathE, pathB, pathD};
-
-%% Analysis
-
-get_dtimeplot(pathE)
-get_B_and_DC_Params_6ch(pathD,pathB,tc,Wh,simulated,folderE,fileE,bint)
-[Mcounts,foldcent] = get_centroidPOS(fold, foldpath, 0);
+printBreak
+fprintf('What task should be started? Input [X] to select\n[A]nalysis\n[S]imulation\n')
+taskselect = input('>>> ','s');
+printBreak
 
 
+
+
+
+%% Point program
+%
+
+if any(taskselect == 'a') || any(taskselect == 'A')
+    [Mcounts,foldcent] = doAnikan();
+elseif any(taskselect == 's') || any(taskselect == 'S')
+    doSabine();
+else
+    error('Failed to assume task request. Try again with diff input [X]')
+end
