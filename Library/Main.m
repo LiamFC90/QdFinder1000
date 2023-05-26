@@ -35,7 +35,13 @@ printBreak
 %
 
 if any(taskselect == 'a') || any(taskselect == 'A')
-    [Mcounts,foldcent] = doAnikan();
+    lookatsim = input('Load a [D]ata file or [S]imulation file?\n>>>','s');
+    if any(lookatsim == 'D') || any(lookatsim == 'd')
+        [Mcounts,foldcent] = doAnikan('rawptu');
+    elseif any(lookatsim == 'S') || any(lookatsim == 's')
+        [Mcounts,foldcent] = doAnikan('sim');
+    else
+    end
 elseif any(taskselect == 's') || any(taskselect == 'S')
     doSabine();
 else

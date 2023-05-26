@@ -1,4 +1,4 @@
-function [Mcounts,foldcent] = doAnikan()
+function [Mcounts,foldcent] = doAnikan(jobtype)
 %DOANIKAN Sets up and requests an analysis job
 %   Detailed explanation goes here
 fprintf('Analysis\n')
@@ -11,6 +11,7 @@ sigmai= 180; sigmaiy = 180;%PSF1 width
 sigmaj= 180; sigmajy = 180;%PSF2 width
 
 %% User Inputs
+%% RAW
 % E-File
 fprintf('Enter data file information:')
 [folderE, fileE] = get_fofi();
@@ -32,6 +33,11 @@ CF_List = get_cf();
 %Build data vars
 fold = [folderE, fileE, folderB, fileB, folderD, fileD, CF_List, tc, bint,sigmai, sigmaiy, sigmaj, sigmajy];
 foldpath = {pathE, pathB, pathD};
+
+%% Sim
+%GatherSimTags
+fprintf('Looking at sim data folder 55555\n')
+%WORKINGINING
 
 %% Analysis
 
