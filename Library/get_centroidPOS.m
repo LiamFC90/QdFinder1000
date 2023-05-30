@@ -442,9 +442,9 @@ for n = 1:numel(icnt)
     y01(n) = y0(n) - dataY.p1*time(n);
 end
 if all(x01 == x0) && all(y01 == y0)
-    fprintf('\n line 445 test\n')
+    fprintf('\n line 445 DRIFT CHECK. IF THIS PRINTS, DRIFT CORRECT IS NOT WORKING!\n')
 end
-%%Decode fold 2
+%%Decode fold 2nd time around since it gets cleared. 
 folderE = fold(1);
 fileE = fold(2);
 folderB = fold(3);
