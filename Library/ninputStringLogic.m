@@ -37,22 +37,6 @@ for alphaselect = [1 2]
     end
 end
 varargin = [varargin; vararginadd];
-% % for qq = (1:length(varargin)) %add flip when done
-% %     for ii = [1 2]
-% %         for pp = 1:length(alphastring)
-% %             if ii == 1
-% %                 if strcmp(varargin(qq),alphastring(pp))
-% %                     varargin = [varargin; alphastring(pp,2)];
-% %                 end
-% %             elseif ii == 2
-% %                 if strcmp(varargin(qq), alphastring(pp))
-% %                     varargin = [varargin; alphastring(pp,1)];
-% %                 end
-% %             end
-% % 
-% %         end
-% %     end
-% % end
 n = 1;
 while n <= numel(varargin)    
         if strcmp(targetvar,varargin(n))

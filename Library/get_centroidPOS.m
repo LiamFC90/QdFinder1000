@@ -441,8 +441,8 @@ for n = 1:numel(icnt)
     x01(n) = x0(n) - dataX.p1*time(n);
     y01(n) = y0(n) - dataY.p1*time(n);
 end
-if any(x01 == x0) || any(y01 == y0)
-    fprintf('a\n line 444 test')
+if all(x01 == x0) && all(y01 == y0)
+    fprintf('\n line 445 test\n')
 end
 %%Decode fold 2
 folderE = fold(1);

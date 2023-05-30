@@ -40,6 +40,8 @@ printBreak
 decidelogic = ninputStringLogic('A','S',taskselect);
 if decidelogic == 1 %do analysis
     clear TalkToUser
+    printLine(20)
+    printBreak
     simlogic = ninputStringLogic('D','S',input('Load a [D]ata file or [S]imulation file?\n>>>','s'));
         if simlogic == 1 %do data file
             [Mcounts,foldcent] = doAnikan('rawptu');
@@ -52,6 +54,9 @@ if decidelogic == 1 %do analysis
         end
 elseif decidelogic == 2%do simulation
     clear TalkToUser
+    printLine(20)
+    printBreak(2)
+    fprintf('Preparing Simulation:\n')
     doSabine();
 else
     warning('Failed to assume task request [%s]. Try again with diff input [X]',taskselect)

@@ -1,7 +1,9 @@
 function [Mcounts,foldcent] = doAnikan(jobtype)
 %DOANIKAN Sets up and requests an analysis job
 %   Detailed explanation goes here
-fprintf('Analysis\n')
+printLine(20)
+printBreak(2)
+fprintf('Analysis: jobtype is %s\n',jobtype)
 printBreak
 %% Gather basic information
 
@@ -11,10 +13,10 @@ printBreak
 %% start job
 if strcmp(jobtype,'rawptu')
     [fold,foldpath] = get_AnikanInput;
-    get_dtimeplot(foldpath(1))
+    get_dtimeplot(cell2mat(foldpath(1)))
     %show user decay before asking for tc selection
     [foldbasic] = get_AnikanBasicParams;
-    get_B_and_DC_Params_6ch(foldpath(3),foldpath(2),foldbasic(2),foldbasic(3),0,fold(1),fold(2),foldbasic(1))
+    get_B_and_DC_Params_6ch(cell2mat(foldpath(3)),cell2mat(foldpath(2)),foldbasic(2),foldbasic(3),0,fold(1),fold(2),foldbasic(1))
     [Mcounts,foldcent] = get_centroidPOS(fold, foldpath, foldbasic, 0);
 
 elseif strcmp(jobtype,'sim')
