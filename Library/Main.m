@@ -9,6 +9,7 @@ clearvars
 % Set output config
 %rerun startup to ensure that file has been parsed since git update
 StartUp()
+
 fprintf('...Executing Main()...\n')
 load(which("DirPath.mat"))
 cd(DirPath)
@@ -21,8 +22,10 @@ configparams();
 
 %% User Inputs
 %Ask user what to do
+TalkToUser = 'engage';
+while exist('TalkToUser','var')
+printBreak(2)
 
-printBreak
 fprintf('What task should be started? Input [X] to select\n[A]nalysis\n[S]imulation\n')
 taskselect = input('>>> ','s');
 printBreak
@@ -34,16 +37,48 @@ printBreak
 %% Point program
 %
 
-if any(taskselect == 'a') || any(taskselect == 'A')
-    lookatsim = input('Load a [D]ata file or [S]imulation file?\n>>>','s');
-    if any(lookatsim == 'D') || any(lookatsim == 'd')
-        [Mcounts,foldcent] = doAnikan('rawptu');
-    elseif any(lookatsim == 'S') || any(lookatsim == 's')
-        [Mcounts,foldcent] = doAnikan('sim');
-    else
-    end
-elseif any(taskselect == 's') || any(taskselect == 'S')
+decidelogic = ninputStringLogic('A','S',taskselect);
+if decidelogic == 1 %do analysis
+    clear TalkToUser
+    simlogic = ninputStringLogic('D','S',input('Load a [D]ata file or [S]imulation file?\n>>>','s'));
+        if simlogic == 1 %do data file
+            [Mcounts,foldcent] = doAnikan('rawptu');
+        elseif simlogic ==2 %do sim file
+            [Mcounts,foldcent] = doAnikan('sim');
+        else
+            warning('Failed to assume file type request. Restarting')
+            TalkToUser = 'engage';
+            printBreak(2)      
+        end
+elseif decidelogic == 2%do simulation
+    clear TalkToUser
     doSabine();
 else
-    error('Failed to assume task request. Try again with diff input [X]')
+    warning('Failed to assume task request [%s]. Try again with diff input [X]',taskselect)
 end
+
+end
+
+
+
+
+
+
+
+
+
+
+% old point script
+% if any(taskselect == 'a') || any(taskselect == 'A')
+%     lookatsim = input('Load a [D]ata file or [S]imulation file?\n>>>','s');
+%     if any(lookatsim == 'D') || any(lookatsim == 'd')
+%         [Mcounts,foldcent] = doAnikan('rawptu');
+%     elseif any(lookatsim == 'S') || any(lookatsim == 's')
+%         [Mcounts,foldcent] = doAnikan('sim');
+%     else
+%     end
+% elseif any(taskselect == 's') || any(taskselect == 'S')
+%     doSabine();
+% else
+%     error('Failed to assume task request. Try again with diff input [X]')
+% end

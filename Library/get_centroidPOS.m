@@ -1,4 +1,4 @@
-function [Mcounts,foldcent] = get_centroidPOS(fold,pathfold,simulated)
+function [Mcounts,foldcent] = get_centroidPOS(fold,pathfold,foldbasic,simulated)
 %GET_CENTROIDPOS finds a single centroid position for the system. 
 %   Detailed explanation goes here
 
@@ -14,12 +14,13 @@ cf1 = fold(7);
 cf2 = fold(8); 
 cf3 = fold(9); 
 cf4 = fold(10);
-tc = fold(11);
-bint = fold(12);
-sigmai = fold(13);
-sigmaiy = fold(14);
-sigmaj = fold(15);
-sigmajy = fold(16);
+bint = foldbasic(1);
+tc = foldbasic(2);
+Wh = foldbasic(3);
+sigmai = foldbasic(4);
+sigmaiy = foldbasic(5);
+sigmaj = foldbasic(6);
+sigmajy = foldbasic(7);
 pathE = string(pathfold(1));
 pathB = string(pathfold(2));
 pathD = string(pathfold(3));
@@ -100,7 +101,7 @@ clearvars -except sync ch dtime total bint  N T tc bint Mcounts mBcounts...
     ianalyze ...
     fnum2 fname_B fname_dc E_tag...
     pfia_list ifi pfja_list positions R2 simulated...
-    cf1 cf2 cf3 cf4 sigmai sigmaiy sigmaj sigmajy savePath Sim_tag wH Etag E_num cntfile dirlist fold pathfold
+    cf1 cf2 cf3 cf4 sigmai sigmaiy sigmaj sigmajy savePath Sim_tag wH Etag E_num cntfile dirlist fold pathfold foldbasic
 
 
 
@@ -454,15 +455,16 @@ cf1 = fold(7);
 cf2 = fold(8); 
 cf3 = fold(9); 
 cf4 = fold(10);
-tc = fold(11);
-bint = fold(12);
-sigmai = fold(13);
-sigmaiy = fold(14);
-sigmaj = fold(15);
-sigmajy = fold(16);
+bint = foldbasic(1);
+tc = foldbasic(2);
+Wh = foldbasic(3);
+sigmai = foldbasic(4);
+sigmaiy = foldbasic(5);
+sigmaj = foldbasic(6);
+sigmajy = foldbasic(7);
 pathE = string(pathfold(1));
 pathB = string(pathfold(2));
-pathD = string(pathfold(3)); 
+pathD = string(pathfold(3));
 foldcent = [x0' y0' Esolvedlist' LnL0']; %new foldvar for CENT POS
 
 

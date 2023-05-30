@@ -1,6 +1,7 @@
 function [out] = ninputStringLogic(varargin)
 %NINPUTSTRINGLOGIC takes n input string chars and provides outcome logic
-%Entered in order
+%Entered in order (var1, var2, ... , targetvar)
+%LiamK 2023
 
 %% validate input
 minArgs = 3; %[char1,char2,userchar]
@@ -11,14 +12,47 @@ clear minArgs maxArgs
 txtalpha = "ABCDEFGHIJKLMONPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 pat = characterListPattern(txtalpha);
 alphastring = string(extract(txtalpha,pat));
+alphastring = [alphastring(1:26), alphastring(27:end)];
 clear txtalpha pat
 %% start
 varargin = string(varargin)';
 targetvar = varargin(end);
 varargin = varargin(1:end-1);
+realsize = numel(varargin);
 %% add alpha cap/lowercase as needed
-
-
+vararginadd = [];
+for alphaselect = [1 2]
+    for qq = 1:length(alphastring)
+        for pp = 1:length(varargin)
+            %fprintf('checking if %s matches %s\n',alphastring(qq,alphaselect), varargin(pp))
+            if strcmp(alphastring(qq,alphaselect), varargin(pp))
+                %fprintf('Match found\n')
+                if alphaselect == 1
+                    vararginadd = [vararginadd; alphastring(qq,2)];
+                elseif alphaselect == 2
+                    vararginadd = [vararginadd; alphastring(qq,1)];
+                end
+            end
+        end
+    end
+end
+varargin = [varargin; vararginadd];
+% % for qq = (1:length(varargin)) %add flip when done
+% %     for ii = [1 2]
+% %         for pp = 1:length(alphastring)
+% %             if ii == 1
+% %                 if strcmp(varargin(qq),alphastring(pp))
+% %                     varargin = [varargin; alphastring(pp,2)];
+% %                 end
+% %             elseif ii == 2
+% %                 if strcmp(varargin(qq), alphastring(pp))
+% %                     varargin = [varargin; alphastring(pp,1)];
+% %                 end
+% %             end
+% % 
+% %         end
+% %     end
+% % end
 n = 1;
 while n <= numel(varargin)    
         if strcmp(targetvar,varargin(n))
@@ -28,7 +62,14 @@ while n <= numel(varargin)
             n = n + 1;
         end
 end
+%Adjust output logic if case was found to be switched
 
-
+if exist("out","var") == 0
+    warning('Unknown input')
+    out = NaN;
+else
+    if out > realsize
+        out = out - realsize;
+    end
 end
 

@@ -2,48 +2,32 @@ function [Mcounts,foldcent] = doAnikan(jobtype)
 %DOANIKAN Sets up and requests an analysis job
 %   Detailed explanation goes here
 fprintf('Analysis\n')
-%%put these somewhere better %%
-bint = input('Enter BIN time(s)? \n>>>');
-tc = input('Enter TIME CUT(ns)?\n>>>');
-Wh = .96; %histogram bin width
-simulated = 0;
-sigmai= 180; sigmaiy = 180;%PSF1 width
-sigmaj= 180; sigmajy = 180;%PSF2 width
+printBreak
+%% Gather basic information
 
-%% User Inputs
-%% RAW
-% E-File
-fprintf('Enter data file information:')
-[folderE, fileE] = get_fofi();
-pathE = get_file_path(folderE, fileE);
 
-% B-File
-fprintf('Enter background file information:')
-[folderB, fileB] = get_fofi();
-pathB = get_file_path(folderB, fileB);
+%%%foldbasic = [bint tc Wh sigmai sigmaiy sigmaj sigmajy];
 
-% DC-File
-fprintf('Enter dark count file information:')
-[folderD, fileD] = get_fofi();
-pathD = get_file_path(folderD, fileD);
+%% start job
+if strcmp(jobtype,'rawptu')
+    [fold,foldpath] = get_AnikanInput;
+    get_dtimeplot(foldpath(1))
+    %show user decay before asking for tc selection
+    [foldbasic] = get_AnikanBasicParams;
+    get_B_and_DC_Params_6ch(foldpath(3),foldpath(2),foldbasic(2),foldbasic(3),0,fold(1),fold(2),foldbasic(1))
+    [Mcounts,foldcent] = get_centroidPOS(fold, foldpath, foldbasic, 0);
 
-% CF-Factors
-CF_List = get_cf();
+elseif strcmp(jobtype,'sim')
+    % $work$
+end
 
-%Build data vars
-fold = [folderE, fileE, folderB, fileB, folderD, fileD, CF_List, tc, bint,sigmai, sigmaiy, sigmaj, sigmajy];
-foldpath = {pathE, pathB, pathD};
+%%% fold = [folderE, fileE, folderB, fileB, folderD, fileD, CF1, CF2, CF3, CF4, tc, bint,sigmai, sigmaiy, sigmaj, sigmajy];
+%%% foldpath = {pathE, pathB, pathD};
 
-%% Sim
-%GatherSimTags
-fprintf('Looking at sim data folder 55555\n')
-%WORKINGINING
 
-%% Analysis
-
-get_dtimeplot(pathE)
-get_B_and_DC_Params_6ch(pathD,pathB,tc,Wh,simulated,folderE,fileE,bint)
-[Mcounts,foldcent] = get_centroidPOS(fold, foldpath, 0);
+% get_dtimeplot(pathE)
+% get_B_and_DC_Params_6ch(pathD,pathB,tc,Wh,simulated,folderE,fileE,bint)
+% [Mcounts,foldcent] = get_centroidPOS(fold, foldpath, 0);
 
 
 end
