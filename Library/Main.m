@@ -64,6 +64,9 @@ end
 
 end
 
+printBreak
+fprintf('Program complete, rerun Main to restart.\n')
+printBreak
 
 
 
@@ -71,19 +74,3 @@ end
 
 
 
-
-
-% old point script
-% if any(taskselect == 'a') || any(taskselect == 'A')
-%     lookatsim = input('Load a [D]ata file or [S]imulation file?\n>>>','s');
-%     if any(lookatsim == 'D') || any(lookatsim == 'd')
-%         [Mcounts,foldcent] = doAnikan('rawptu');
-%     elseif any(lookatsim == 'S') || any(lookatsim == 's')
-%         [Mcounts,foldcent] = doAnikan('sim');
-%     else
-%     end
-% elseif any(taskselect == 's') || any(taskselect == 'S')
-%     doSabine();
-% else
-%     error('Failed to assume task request. Try again with diff input [X]')
-% end
