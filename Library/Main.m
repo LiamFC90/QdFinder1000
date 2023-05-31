@@ -4,10 +4,11 @@
    %data file. These are then passed to function workspaces.
    %Run this script to execute the program
 %% Begin Setup
+clc
 close all
 clearvars
 % Set output config
-%rerun startup to ensure that file has been parsed since git update
+%rerun startup to ensure that file has been parsed since/if git update
 StartUp()
 
 fprintf('...Executing Main()...\n')
@@ -66,7 +67,9 @@ end
 
 printBreak
 fprintf('Program complete, rerun Main to restart.\n')
-printBreak
+printBreak(3)
+printLine(3)
+
 
 
 

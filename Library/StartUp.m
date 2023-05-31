@@ -1,5 +1,6 @@
 clc
 %% Preamble
+printBreak(3)
 cd
 ver = '1.002';%build ID
 fprintf('Initializing QdFinder: Version %s on %s\n',ver,string(computer));

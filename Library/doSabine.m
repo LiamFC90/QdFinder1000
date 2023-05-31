@@ -44,27 +44,26 @@ elseif ismac || isunix
     save("Library/tempdata.mat","pvars")
 end
 fprintf('Starting Sim\nThis will take up to a couple hours depending on sim length\n')
-parfor n = [1 2 3] %create all three files in parallel
+for n = [1 2 3]
+%parfor n = [1 2 3] %create all three files in parallel NOT SAVING DC FILE
+%FOR SOME REASON. TRACKING
     pvars = struct2array(load('tempdata.mat','pvars'));
     T=pvars(1);t=pvars(2);sigmai=pvars(3);sigmaiy=pvars(4);mui=pvars(5);
     Ri=pvars(6);RB=pvars(7);Pi=pvars(8);RD1=pvars(9);RD2=pvars(10);
     RD3=pvars(11);RD4=pvars(12);PB1=pvars(13);PB2=pvars(14);PB3=pvars(15);
     PB4=pvars(16);PiCarry=pvars(17);RiCarry=pvars(18);
-    if n == 1
+    if n == 1   %make E file
         fprintf('Creating file 1/3\n')
-        fprintf('Efile...\n')
-        %make E file
+        fprintf('Efile...\n')        
         doSim1E(T,t,sigmai,sigmaiy, mui, muiy, Ri, RB, Pi, RD1, RD2, RD3, RD4, PB1, PB2, PB3, PB4, PiCarry, RiCarry)
-        fprintf('Made Efile. Saved to ...DATA... under 55555\n')
-        %Now, set Pi to 0 and run again to create background file
-    elseif n == 2
+        fprintf('Made Efile. Saved to ...DATA... under 55555\n')        
+    elseif n == 2   %make B file, set Pi to 0 and run again to create background file
         fprintf('Creating file 2/3\n')
         fprintf('Bfile...\n')
         Pi = 0;
         doSim1E(T,t,sigmai,sigmaiy, mui, muiy, Ri, RB, Pi, RD1, RD2, RD3, RD4, PB1, PB2, PB3, PB4, PiCarry, RiCarry)
-        fprintf('Made Bfile. Saved to ...DATA... under 55555\n')
-        %now set PB1 to 0 and do it all again
-    elseif n == 3
+        fprintf('Made Bfile. Saved to ...DATA... under 55555\n')        
+    elseif n == 3 %make DC file, set PB1 to 0 and do it all again
         fprintf('Creating file 3/3\n')
         fprintf('DCfile...\n')
         PB1 = 0; PB2 = 0; PB3 = 0; PB4 = 0;
