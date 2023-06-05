@@ -1,3 +1,4 @@
+
 function [plotvar] = get_dtimeplot(filepath)
 %GET_DTIMEPLOT Prints a histogram that shows decays for the data file
 %   Detailed explanation goes here
@@ -17,6 +18,9 @@ end
 
 histogram(dtime)
 set(gca,'YScale','log')
+title('Decay Params')
+ylabel('freq')
+xlabel('time (ns)')
 drawnow
 end
 
