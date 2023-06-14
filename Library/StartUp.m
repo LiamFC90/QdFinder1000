@@ -23,14 +23,14 @@ if not(isfolder("Analysis"))
 end
 
 %Creates sorting keys
-if not(isfile("Library\sortingP_idxGuide_1emitter_backgrd_dc.mat")) || not(isfile("Library/sortingP_idxGuide_1emitter_backgrd_dc.mat"))
+if not(isfile("Library\sortingP_idxGuide_1emitter_backgrd_dc.mat")) && not(isfile("Library/sortingP_idxGuide_1emitter_backgrd_dc.mat"))
     fprintf('Get single emitter sort key\n')
     makeSortingMatrix_1emitter_backgrd_dc
     fprintf('Found key: makeSortingMatrix_1emitter_backgrd_dc\n')
 else
     fprintf('Found key: makeSortingMatrix_1emitter_backgrd_dc\n')
 end
-if not(isfile("Library\sortingP_idxGuide_2emitters_backgrd_dc.mat")) || not(isfile("Library/sortingP_idxGuide_2emitters_backgrd_dc.mat"))
+if not(isfile("Library\sortingP_idxGuide_2emitters_backgrd_dc.mat")) && not(isfile("Library/sortingP_idxGuide_2emitters_backgrd_dc.mat"))
     fprintf('Get multi emitter sort key\n')
     makeSortingMatrix_2emitters_backgrd_dc
     fprintf('Found key: makeSortingMatrix_2emitters_backgrd_dc\n')
@@ -42,7 +42,8 @@ printBreak
 
 
 %% Start Up
-%Set up changes for OS. Set up supports Linux and Windows. No MacOS support
+%Set up changes for OS. Set up supports Linux and Windows. Might support
+%MacOS. I dont have an .iso to check with.
 %Adds both folders to path so matlab can see them
 fprintf('Adding resources to path: \n')
 
@@ -53,7 +54,7 @@ elseif ispc
 elseif ismac
     addpath(genpath("Data/"))
 end
-fprintf('...Data...\n')
+fprintf('..Data..\n')
 
 if isunix
     addpath(genpath("Analysis/"))
@@ -62,11 +63,11 @@ elseif ispc
 elseif ismac
     addpath(genpath("Analysis/"))
 end
-fprintf('...Analysis...\n')
+fprintf('..Analysis..\n')
 
 if not(isfile("Library\DirPath.mat"))
 DirPath = cd;
-fprintf('Saving directory information\n Main directory is at:\n%s\n',DirPath)
+fprintf('Saving directory information\n Main directory is at:\n%s ..\n',DirPath)
 if ispc
 save("Library\DirPath.mat","DirPath")
 elseif isunix || ismac
