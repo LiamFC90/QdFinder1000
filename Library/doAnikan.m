@@ -12,7 +12,7 @@ printBreak
 
 %% start job
 if strcmp(jobtype,'rawptu')
-    [fold,foldpath] = get_AnikanInput;
+    [fold,foldpath] = get_AnikanInput(jobtype);
     get_dtimeplot(cell2mat(foldpath(1)))
     %show user decay before asking for tc selection
     [foldbasic] = get_AnikanBasicParams;
@@ -20,6 +20,7 @@ if strcmp(jobtype,'rawptu')
     [Mcounts,foldcent] = get_centroidPOS(fold, foldpath, foldbasic, 0);
 
 elseif strcmp(jobtype,'sim')
+    [fold,foldpath] = get_AnikanInput(jobtype);
     % $work$
 end
 

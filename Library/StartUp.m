@@ -1,5 +1,8 @@
 clc
 %% Preamble
+%%Backend setup hidden from user
+warning('off','MATLAB:MKDIR:DirectoryExists')
+%%
 printBreak(3)
 cd
 ver = '1.002';%build ID
@@ -75,6 +78,8 @@ save("Library/DirPath.mat","DirPath")
 end
 end
 printLine
+
+
 %% End, enter program
 fprintf('Done\n\n\n')
 fprintf('Execute "Main()" to begin analysis\n')
