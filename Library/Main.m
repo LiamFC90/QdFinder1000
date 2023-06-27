@@ -1,4 +1,4 @@
- %% Begin Main program
+%% Begin Main program
    %should remain dominated by user input. Prefer all work done in function
    %workspace. This workspace should hold handles determined by params of
    %data file. These are then passed to function workspaces.

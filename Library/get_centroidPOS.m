@@ -4,6 +4,7 @@ function [Mcounts,foldcent] = get_centroidPOS(fold,pathfold,foldbasic,simulated)
 
 
 %%Decode fold
+if simulated == 0
 folderE = fold(1);
 fileE = fold(2);
 folderB = fold(3);
@@ -14,6 +15,14 @@ cf1 = fold(7);
 cf2 = fold(8); 
 cf3 = fold(9); 
 cf4 = fold(10);
+end
+if simulated == 1
+cf1 = 1;
+cf2 = 1;
+cf3 = 1;
+cf4 = 1;
+end
+
 bint = foldbasic(1);
 tc = foldbasic(2);
 Wh = foldbasic(3);
@@ -30,7 +39,7 @@ load(which(strcat('BandD_tc',string(tc),'.mat')));
 N = bint/(T*10^-9);%number of periods in time bint_pos
 
 %% Part 1: find a single centroid location
-
+if simulated == 0
 [output,~] =Read_PTU_V1_Barelli_fast(pathE);% this function must be in the same directory as this progra
 MeasDesc_GlobalResolution = output.Headers.MeasDesc_GlobalResolution;%macrotime resolution in seconds
 MeasDesc_Resolution = output.MeasDesc_Resolution; %microt resolution in seconds
@@ -42,6 +51,12 @@ T = round(output.Headers.MeasDesc_GlobalResolution*10^9,-2);
 if max(ch)==7
     ch = ch-2;
 end
+end
+if simulated ==1
+load(pathE,'dtime','ch','sync','total')
+ch = ch + 1;
+end
+
 [sync, ch, dtime, total] = cutRepeats(sync,ch,dtime,total);
 [sync, ch, dtime, total] = cutRepeats(sync,ch,dtime,total);
 tmax = max(sync);
@@ -444,7 +459,9 @@ end
 if all(x01 == x0) && all(y01 == y0)
     fprintf('\n line 445 DRIFT CHECK. IF THIS PRINTS, DRIFT CORRECT IS NOT WORKING! KNOWN ISSUE\n')
 end
+
 %%Decode fold 2nd time around since it gets cleared. 
+if simulated == 0
 folderE = fold(1);
 fileE = fold(2);
 folderB = fold(3);
@@ -455,6 +472,16 @@ cf1 = fold(7);
 cf2 = fold(8); 
 cf3 = fold(9); 
 cf4 = fold(10);
+end
+if simulated == 1
+folderE = 55555;
+fileE = fold(5);
+cf1 = 1;
+cf2 = 1;
+cf3 = 1;
+cf4 = 1;
+end
+
 bint = foldbasic(1);
 tc = foldbasic(2);
 Wh = foldbasic(3);

@@ -18,7 +18,7 @@ if simulated==1
     ddtime = dtime;
     ch = ch+1;
     
-    T=400
+    T=400;
 end
 
 if max(ch)==7

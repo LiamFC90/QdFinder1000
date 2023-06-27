@@ -76,7 +76,7 @@ warning('off','MATLAB:MKDIR:DirectoryExists')
         fprintf('DCfile...\n')
         Pi = 0;
         PB1 = 0; PB2 = 0; PB3 = 0; PB4 = 0;
-        doSim1E(T,t,sigmai,sigmaiy, mui, muiy, Ri, RB, Pi, RD1, RD2, RD3, RD4, PB1, PB2, PB3, PB4, Pi5Carry, RiCarry)
+        doSim1E(T,t,sigmai,sigmaiy, mui, muiy, Ri, RB, Pi, RD1, RD2, RD3, RD4, PB1, PB2, PB3, PB4, PiCarry, RiCarry)
         fprintf('Made DCfile. Saved to ...DATA... under 55555\n')
     end
 end
