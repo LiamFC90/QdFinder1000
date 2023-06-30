@@ -5,7 +5,7 @@ warning('off','MATLAB:MKDIR:DirectoryExists')
 %%
 printBreak(3)
 cd
-ver = '1.002';%build ID
+ver = '1.004';%build ID
 fprintf('Initializing QdFinder: Version %s on %s\n',ver,string(computer));
 if ispc
     !git -v

@@ -42,10 +42,16 @@ elseif strcmp(jobtype,'sim')
     TauVal = input('Enter Tau in ns\n>>>  ');
     ratevl = input('Enter emission rate\n>>>  ');
     
-    foldpath = strcat(cd,'\Data\55555\X_',string(XposNM),'_Y_',string(YposNM),'\Tau_',string(TauVal),'\rate_',string(ratevl));
-    foldpath = [strcat(foldpath,'\E.mat'), strcat(foldpath,'\B.mat'), strcat(foldpath,'\DC.mat')];
-    fold = [XposNM, YposNM, TauVal, ratevl];
-    
+    if ispc
+        foldpath = strcat(cd,'\Data\55555\X_',string(XposNM),'_Y_',string(YposNM),'\Tau_',string(TauVal),'\rate_',string(ratevl));
+        foldpath = [strcat(foldpath,'\E.mat'), strcat(foldpath,'\B.mat'), strcat(foldpath,'\DC.mat')];
+        fold = [XposNM, YposNM, TauVal, ratevl];
+    elseif ismac || isunix
+        foldpath = strcat(cd,'/Data/55555/X_',string(XposNM),'_Y_',string(YposNM),'/Tau_',string(TauVal),'/rate_',string(ratevl));
+        foldpath = [strcat(foldpath,'/E.mat'), strcat(foldpath,'/B.mat'), strcat(foldpath,'/DC.mat')];
+        fold = [XposNM, YposNM, TauVal, ratevl];
+    end
+
     %C:\Users\liamk\MATLAB\Projects\QDwork\Data\55555\X_5_Y_10\Tau_5\rate_0.005
 
 

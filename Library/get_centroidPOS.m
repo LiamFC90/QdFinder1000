@@ -452,7 +452,7 @@ x0 = x0(1:length(time));
 y0 = y0(1:length(time));
 [dataX,~] = DriftFit2(time,x0);
 [dataY,~] = DriftFit2(time,y0);
-for n = 1:numel(icnt)
+for n = 1:icnt
     x01(n) = x0(n) - dataX.p1*time(n);
     y01(n) = y0(n) - dataY.p1*time(n);
 end
@@ -492,11 +492,11 @@ sigmajy = foldbasic(7);
 pathE = string(pathfold(1));
 pathB = string(pathfold(2));
 pathD = string(pathfold(3));
-foldcent = [x0' y0' Esolvedlist' LnL0']; %new foldvar for CENT POS
+foldcent = [x01' y01' Esolvedlist' LnL0']; %new foldvar for CENT POS
 
 
 figure('units','inch','position',[1,1,3,3]);
-scatter(x0,y0,'k','filled'); hold on
+scatter(x01,y01,'k','filled'); hold on
 grid on; box on;
 set(gcf,'color','w');
 xlabel('x (nm)');ylabel('y (nm)')
@@ -517,6 +517,9 @@ elseif isunix || ismac
     exportgraphics(gcf,strcat('Centroid_tc',string(tc),'ns_bint',string(bint),'s.png'))
     cd(temppath)
 end
-fprintf('Found Centroid at:\nX = %.2f +- %.2f\nY = %.2f +- %.2f\n',mean(x0),std(x0),mean(y0),std(y0))
+printBreak
+fprintf('Found Centroid at:\nX = %.2f +- %.2f\nY = %.2f +- %.2f\n',mean(x01),std(x01),mean(y01),std(y01))
+printBreak
+printLine
 end
 
