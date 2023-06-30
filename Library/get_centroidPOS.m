@@ -1,26 +1,26 @@
 function [Mcounts,foldcent] = get_centroidPOS(fold,pathfold,foldbasic,simulated)
-%GET_CENTROIDPOS finds a single centroid position for the system. 
+%GET_CENTROIDPOS finds a single centroid position for the system.
 %   Detailed explanation goes here
 
 
 %%Decode fold
 if simulated == 0
-folderE = fold(1);
-fileE = fold(2);
-folderB = fold(3);
-fileB = fold(4);
-folderD = fold(5);
-fileD = fold(6);
-cf1 = fold(7); 
-cf2 = fold(8); 
-cf3 = fold(9); 
-cf4 = fold(10);
+    folderE = fold(1);
+    fileE = fold(2);
+    folderB = fold(3);
+    fileB = fold(4);
+    folderD = fold(5);
+    fileD = fold(6);
+    cf1 = fold(7);
+    cf2 = fold(8);
+    cf3 = fold(9);
+    cf4 = fold(10);
 end
 if simulated == 1
-cf1 = 1;
-cf2 = 1;
-cf3 = 1;
-cf4 = 1;
+    cf1 = 1;
+    cf2 = 1;
+    cf3 = 1;
+    cf4 = 1;
 end
 
 bint = foldbasic(1);
@@ -40,21 +40,21 @@ N = bint/(T*10^-9);%number of periods in time bint_pos
 
 %% Part 1: find a single centroid location
 if simulated == 0
-[output,~] =Read_PTU_V1_Barelli_fast(pathE);% this function must be in the same directory as this progra
-MeasDesc_GlobalResolution = output.Headers.MeasDesc_GlobalResolution;%macrotime resolution in seconds
-MeasDesc_Resolution = output.MeasDesc_Resolution; %microt resolution in seconds
-dtime = output.ph_dtime.*MeasDesc_Resolution*(10^9); %microt in nanoseconds
-sync = output.ph_sync.*MeasDesc_GlobalResolution; % in seconds
-total = size(sync,1);%total number of photons in dataset
-ch = output.ph_channel;
-T = round(output.Headers.MeasDesc_GlobalResolution*10^9,-2);
-if max(ch)==7
-    ch = ch-2;
-end
+    [output,~] =Read_PTU_V1_Barelli_fast(pathE);% this function must be in the same directory as this progra
+    MeasDesc_GlobalResolution = output.Headers.MeasDesc_GlobalResolution;%macrotime resolution in seconds
+    MeasDesc_Resolution = output.MeasDesc_Resolution; %microt resolution in seconds
+    dtime = output.ph_dtime.*MeasDesc_Resolution*(10^9); %microt in nanoseconds
+    sync = output.ph_sync.*MeasDesc_GlobalResolution; % in seconds
+    total = size(sync,1);%total number of photons in dataset
+    ch = output.ph_channel;
+    T = round(output.Headers.MeasDesc_GlobalResolution*10^9,-2);
+    if max(ch)==7
+        ch = ch-2;
+    end
 end
 if simulated ==1
-load(pathE,'dtime','ch','sync','total')
-ch = ch + 1;
+    load(pathE,'dtime','ch','sync','total')
+    ch = ch + 1;
 end
 
 [sync, ch, dtime, total] = cutRepeats(sync,ch,dtime,total);
@@ -438,7 +438,7 @@ for icnt = 1:size(Mcounts,1)
         end
         x0(icnt) = xyL(1,1);
         y0(icnt) = xyL(1,2);
-        
+
         Esolvedlist(icnt) = Pisolved;
         if isnan(x0(icnt))==0
             LnL0(icnt) = lnLL(irun);
@@ -447,39 +447,40 @@ for icnt = 1:size(Mcounts,1)
     end
 
 end
-time = 0:bint:(icnt-1)*bint;
-x0 = x0(1:length(time));
-y0 = y0(1:length(time));
-[dataX,~] = DriftFit2(time,x0);
-[dataY,~] = DriftFit2(time,y0);
-for n = 1:icnt
-    x01(n) = x0(n) - dataX.p1*time(n);
-    y01(n) = y0(n) - dataY.p1*time(n);
+if simulated == 0 %do drift correction if not sim data
+    time = 0:bint:(icnt-1)*bint;
+    x0 = x0(1:length(time));
+    y0 = y0(1:length(time));
+    [dataX,~] = DriftFit2(time,x0);
+    [dataY,~] = DriftFit2(time,y0);
+    for n = 1:icnt
+        x01(n) = x0(n) - dataX.p1*time(n);
+        y01(n) = y0(n) - dataY.p1*time(n);
+    end
+    if all(x01 == x0) && all(y01 == y0)
+        fprintf('\n line 445 DRIFT CHECK. IF THIS PRINTS, DRIFT CORRECT IS NOT WORKING! KNOWN ISSUE\n')
+    end
 end
-if all(x01 == x0) && all(y01 == y0)
-    fprintf('\n line 445 DRIFT CHECK. IF THIS PRINTS, DRIFT CORRECT IS NOT WORKING! KNOWN ISSUE\n')
-end
-
-%%Decode fold 2nd time around since it gets cleared. 
+%%Decode fold 2nd time around since it gets cleared.
 if simulated == 0
-folderE = fold(1);
-fileE = fold(2);
-folderB = fold(3);
-fileB = fold(4);
-folderD = fold(5);
-fileD = fold(6);
-cf1 = fold(7); 
-cf2 = fold(8); 
-cf3 = fold(9); 
-cf4 = fold(10);
+    folderE = fold(1);
+    fileE = fold(2);
+    folderB = fold(3);
+    fileB = fold(4);
+    folderD = fold(5);
+    fileD = fold(6);
+    cf1 = fold(7);
+    cf2 = fold(8);
+    cf3 = fold(9);
+    cf4 = fold(10);
 end
 if simulated == 1
-folderE = 55555;
-fileE = fold(5);
-cf1 = 1;
-cf2 = 1;
-cf3 = 1;
-cf4 = 1;
+    folderE = 55555;
+    fileE = fold(5);
+    cf1 = 1;
+    cf2 = 1;
+    cf3 = 1;
+    cf4 = 1;
 end
 
 bint = foldbasic(1);
@@ -492,8 +493,12 @@ sigmajy = foldbasic(7);
 pathE = string(pathfold(1));
 pathB = string(pathfold(2));
 pathD = string(pathfold(3));
-foldcent = [x01' y01' Esolvedlist' LnL0']; %new foldvar for CENT POS
 
+x01 = x01(1:length(Esolvedlist));
+y01 = y01(1:length(Esolvedlist));
+LnL0 = LnL0(1:length(Esolvedlist));
+
+foldcent = [x01' y01' Esolvedlist' LnL0']; %new foldvar for CENT POS
 
 figure('units','inch','position',[1,1,3,3]);
 scatter(x01,y01,'k','filled'); hold on
@@ -518,7 +523,7 @@ elseif isunix || ismac
     cd(temppath)
 end
 printBreak
-fprintf('Found Centroid at:\nX = %.2f +- %.2f\nY = %.2f +- %.2f\n',mean(x01),std(x01),mean(y01),std(y01))
+fprintf('Found Centroid at:\nX = %.2f +- %.2f\nY = %.2f +- %.2f\n',mean(x01,'omitnan'),std(x01,'omitnan'),mean(y01,'omitnan'),std(y01,'omitnan'))
 printBreak
 printLine
 end
