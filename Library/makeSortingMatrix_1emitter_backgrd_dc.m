@@ -18,6 +18,8 @@ imat2 = imat0*imat2;
 imat3 = imat0*imat3;
 imat4 = imat0*imat4;
 
+clear imat0
+
 % P1 = reshape(P1',[],1);
 imat1 = reshape(imat1',[],1);
 imat2 = reshape(imat2',[],1);
@@ -46,6 +48,8 @@ imat2b = imat2*imat2b;
 imat3b = imat3*imat3b;
 imat4b = imat4*imat4b;
 
+clear imat1 imat2 imat3 imat4
+
 % P2 = reshape(P2',[],1);
 imat1a = reshape(imat1a',[],1);
 imat2a = reshape(imat2a',[],1);
@@ -63,6 +67,8 @@ filler = [1 1];
 
 Bmat1 = Bmat*B1;
 Bmat1 = reshape(Bmat1',[],1);
+
+clear B1
 
 imat1a = imat1a*filler;
 imat2a = imat2a*filler;
@@ -88,6 +94,8 @@ filler = [1 1];
 
 Bmat2 = Bmat*B2;
 Bmat2 = reshape(Bmat2',[],1);
+
+clear B2
 
 Bmat1 = Bmat1*filler;
 Bmat1 = reshape(Bmat1',[],1);
@@ -116,6 +124,8 @@ filler = [1 1];
 
 Bmat3 = Bmat*B3;
 Bmat3 = reshape(Bmat3',[],1);
+
+clear B3
 
 Bmat1 = Bmat1*filler;
 Bmat1 = reshape(Bmat1',[],1);
@@ -146,6 +156,8 @@ filler = [1 1];
 
 Bmat4 = Bmat*B4;
 Bmat4 = reshape(Bmat4',[],1);
+
+clear B4
 
 Bmat1 = Bmat1*filler;
 Bmat1 = reshape(Bmat1',[],1);
@@ -193,6 +205,8 @@ Bmat4b = Bmat4*pfBb_mat;
 Bmat4a = reshape(Bmat4a',[],1);
 Bmat4b = reshape(Bmat4b',[],1);
 
+clear pfBa_mat pfBb_mat
+
 imat1a = imat1a*filler;
 imat2a = imat2a*filler;
 imat3a = imat3a*filler;
@@ -223,6 +237,8 @@ d1a = dc*D1a;
 d1b = dc*D1b;
 d1a = reshape(d1a',[],1);
 d1b = reshape(d1b',[],1);
+
+clear D1a D1b
 
 imat1a = imat1a*filler;
 imat2a = imat2a*filler;
@@ -269,6 +285,8 @@ d2a = dc*D2a;
 d2b = dc*D2b;
 d2a = reshape(d2a',[],1);
 d2b = reshape(d2b',[],1);
+
+clear D2a D2b
 
 d1a = d1a*filler;
 d1b = d1b*filler;
@@ -319,6 +337,8 @@ d3a = dc*D3a;
 d3b = dc*D3b;
 d3a = reshape(d3a',[],1);
 d3b = reshape(d3b',[],1);
+
+clear D3a D3b
 
 d1a = d1a*filler;
 d1b = d1b*filler;
@@ -375,6 +395,8 @@ d4b = dc*D4b;
 d4a = reshape(d4a',[],1);
 d4b = reshape(d4b',[],1);
 
+clear D4a D4b
+
 d1a = d1a*filler;
 d1b = d1b*filler;
 d1a = reshape(d1a',[],1);
@@ -388,6 +410,7 @@ d3b = d3b*filler;
 d3a = reshape(d3a',[],1);
 d3b = reshape(d3b',[],1);
 
+%final packaging of observable arrays for E and B
 imat1a = imat1a*filler;
 imat2a = imat2a*filler;
 imat3a = imat3a*filler;
@@ -432,6 +455,7 @@ c2b = c1a;
 c3b = c1a;
 c4b = c1a;
 
+%   = struct * Ecounts * Bcounts * Dcounts
 c1a = c1a.*imat1a+c1a.*Bmat1a+c1a.*d1a;
 c2a = c2a.*imat2a+c2a.*Bmat2a+c2a.*d2a;
 c3a = c3a.*imat3a+c3a.*Bmat3a+c3a.*d3a;
@@ -470,6 +494,7 @@ for ic = 1:size(Mob,1)
     end
 end
 
+% preallocate vars in memory for speed
 MobS = sum(Mob1,2);
 
 key1a=zeros(leng,1);

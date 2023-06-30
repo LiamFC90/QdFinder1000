@@ -15,17 +15,17 @@ end
 
 %% First time only
 
-%Creates data folder struct
+%%Creates data folder struct
 if not(isfolder("Data"))
     mkdir("Data")
 end
 
-%Creates Analysis folder struct
+%%Creates Analysis folder struct
 if not(isfolder("Analysis"))
     mkdir("Analysis")
 end
 
-%Creates sorting keys
+%%Creates sorting keys
 if not(isfile("Library\sortingP_idxGuide_1emitter_backgrd_dc.mat")) && not(isfile("Library/sortingP_idxGuide_1emitter_backgrd_dc.mat"))
     fprintf('Get single emitter sort key\n')
     makeSortingMatrix_1emitter_backgrd_dc

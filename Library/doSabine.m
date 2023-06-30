@@ -45,7 +45,7 @@ elseif ismac || isunix
     save("Library/tempdata.mat","pvars")
 end
 fprintf('Starting Sim\nThis will take up to a couple hours depending on sim length\n')
-%%for n = [1 2 3] parfor should work now
+%for n = [1 2 3] parfor should work now
 parfor n = [1 2 3] %repass error surpression markers to each worker. This might not be intended behavior
     pvars = struct2cell(load('tempdata.mat','pvars'));
     pvars = vertcat(pvars{:});
