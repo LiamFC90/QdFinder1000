@@ -3,6 +3,12 @@ function [out] = ninputStringLogic(varargin)
 %Entered in order (var1, var2, ... , targetvar)
 %LiamK 2023
 
+
+
+
+
+
+
 %% validate input
 minArgs = 3; %[char1,char2,userchar]
 maxArgs = nargin;

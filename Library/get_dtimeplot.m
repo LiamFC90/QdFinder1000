@@ -19,12 +19,17 @@ elseif string(jobtype) == 'sim'
     load(filepath,"dtime")
 end
    
-
+figure;
 histogram(dtime)
 set(gca,'YScale','log')
 title('Decay Params')
 ylabel('freq')
 xlabel('time (ns)')
 drawnow
+figure;
+histogram(sync)
+title('Intensity')
+ylabel('n')
+xlabel('time(s)')
 end
 
